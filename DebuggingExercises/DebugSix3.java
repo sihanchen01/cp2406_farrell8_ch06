@@ -4,30 +4,28 @@
 // At command line, count down to blastoff
 // With a brief pause between each displayed value
 import javax.swing.*;
+import java.util.concurrent.TimeUnit;
+
 public class DebugSix3
 {
-  public static void main(String[] args)
-  {
+  public static void main(String[] args) throws InterruptedException {
     String userNumString;
     int userNum, val;
     final int MIN = 1;
     final int MAX = 20;
     userNumString = JOptionPane.showInputDialog(null,
-        "Enter a number between  + MIN + " and " + MAX +  inclusive");
+        "Enter a number between " + MIN + " and " + MAX + " inclusive");
     userNum = Integer.parseInt(userNumString);
     while(userNum < MIN || userNum > MAX)
     {
        userNumString = JOptionPane.showInputDialog(null,
-        "Number out of range" +
-        "\nEnter a number between " + MIN +  and " + MAX + " inclusive");
-       userNum = Integer.parseInt(userNuString);
+        "Number out of range \nEnter a number between " + MIN + " and " + MAX + " inclusive");
+       userNum = Integer.parseInt(userNumString);
     }
-    for(val = userNum; val < 0; --val)
+    for(val = userNum; val > 0; --val)
     {
       System.out.print(val + "  ");
-      for(int x = 0; x < 100000; ++x)
-       for(int y = 0; y < 10000; ++y);
-       // Adjust these numbers for faster or slower performance
+      TimeUnit.SECONDS.sleep(1);
     }
     System.out.println("Blastoff!");
   }
